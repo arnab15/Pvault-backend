@@ -1,0 +1,10 @@
+const express = require("express");
+const passwordController = require("../controllers/managePassword");
+const { isAuthenticated } = require("../middleware/isAuthenticated");
+const router = express.Router();
+router.post("/pass", isAuthenticated, passwordController.addNewPassword);
+router.put("/pass/:id", isAuthenticated, passwordController.updatePassword);
+router.get("/pass", isAuthenticated, passwordController.getuserPasswords);
+router.get("/pass/:id", isAuthenticated, passwordController.getuserPasswordByPasswordId);
+router.delete("/pass/:id", isAuthenticated, passwordController.deletePassword);
+module.exports = router;
